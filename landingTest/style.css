@@ -1,0 +1,152 @@
+header {
+    background: #007765;
+    position: sticky;
+    top: 0;
+}
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.logo {
+    float: left;
+    height: 3vh;
+}
+
+.secondLogo {
+    float: left;
+    height: 6vh;
+    margin: 0.86em 0.86em 0.86em 0;
+}
+
+.catalog {
+    float: right;
+}
+
+.catalog li, .team li {
+    display: inline-block;
+}
+
+.catalog a {
+    line-height: 3vh;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.catalog ul, .team ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.divImg {
+    background: url(headImage.png);
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.secondImage {
+    background: url(blueImage.png);
+}
+
+.text, .divMessage {
+    scroll-margin-top: 5vh;
+    font-family: 'Roboto',
+        'Helvetica Nue',
+        sans-serif;
+}
+
+.text h1, .divMessage {
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+    color: #007765;
+    font-size: 5vh;
+    line-height: 6vh;
+}
+
+.text p {
+    font-size: 2vh;
+    line-height: 3vh;
+}
+
+.divMessage {
+    color: #FFFFFF;
+}
+
+.secondMessage {
+    font-size: 3vh;
+    line-height: 4vh;
+}
+
+.block1 {
+    background: #EEEEEE;
+    width: 100%;
+}
+
+.avatar {
+    width: min(20vw, 30vh);
+    max-width: 150px;
+}
+
+.team figure {
+    text-align: center;
+    width: 30vw;
+    max-width: 321px;
+    padding: 0;
+    margin: 0;
+}
+
+.team {
+    text-align: center;
+}
+
+text figcaption {
+    margin: 10px auto;
+    max-width: 300px;
+    text-align: center;
+}
+
+.name {
+    color: #007765;
+    font-size: min(3vw, 4vh, 26px);
+    line-height: min(4vw, 5vh, 32px);
+}
+
+.post {
+    color: #000000;
+    font-size: min(2vw, 3vh, 20px);
+    line-height: min(3vw, 4vh, 26px);
+    font-style: italic;
+}
+
+footer {
+    width: 100%;
+    background: #333333;;
+}
+
+footer p {
+    text-align: center;
+    color: #ffffff;
+}
+
+.team ul {
+    margin-top: 5vh
+}
+
+.team ul+ul {
+    margin-bottom: 5vh;
+}

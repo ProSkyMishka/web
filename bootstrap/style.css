@@ -1,0 +1,12 @@
+.blue-text td {
+    color: #007BFF;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}

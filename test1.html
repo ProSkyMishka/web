@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="anchor">Тесты</h1>
+    Список ингредиентов:
+    <ul>
+      <li>Картошка</li>
+      <li>Морковка</li>
+      <li>Свекла</li>
+    </ul>
+    Инструкция по приготовлению:
+    <ol>
+      <li>Довести воду до кипения</li>
+      <li>Засыпать ингредиенты</li>
+      <li>Варить 10 минут</li>
+    </ol>
+    <dl>
+      <dt>Гаспачо</dt>
+      <dd>лёгкий холодный суп из перетёртых в пюре свежих овощей</dd>
+      <dt>Том-ям</dt>
+      <dd>
+        кисло-острый суп на основе куриного бульона с креветками, курицей, рыбой
+        или другими морепродуктами
+      </dd>
+      <dt>Борщ</dt>
+      <dd>
+        разновидность супа на основе свёклы, которая придаёт борщу характерный
+        красный цвет
+      </dd>
+    </dl>
+    <ul>
+      <li>
+        Омлет
+        <ul>
+          <li>Молоко</li>
+          <li>Яйца</li>
+        </ul>
+      </li>
+      <li>
+        Блинчики
+        <ul>
+          <li>Молоко</li>
+          <li>Яйца</li>
+          <li>Мука</li>
+          <li>Сахар</li>
+          <li>Соль</li>
+          <li>Разрыхлитель</li>
+        </ul>
+      </li>
+      <li>Торт</li>
+      <li>Пирог</li>
+    </ul>
+    <img
+      src="https://media.istockphoto.com/id/1278959830/ru/фото/симпатичный-красный-котенок-прячется-в-глубоком-снегу-зимой.jpg?s=1024x1024&w=is&k=20&c=eUD7B0uQrtUIBPmgevCoK5U_kvwqpGCMJPd4DjV5_oM="
+      title="Мурка"
+      alt="Рыжая кошка валяется в снегу"
+      width="640"
+      height="480"
+    />
+    <figure>
+      <img
+        src="https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png"
+      />
+      <figcaption>Лого гугла от 2015 года</figcaption>
+    </figure>
+    <a href="https://google.com/">Google</a><br />
+    <a href="#anchor">Перейти к якорю</a><br />
+    <a href="" target="_blank">link in new tab</a>
+    <table style="text-align: center">
+      <tr>
+        <th>Имя</th>
+        <th>Возраст</th>
+        <th>Суперспособность</th>
+      </tr>
+      <tr>
+        <td>Логан</td>
+        <td>186</td>
+        <td style="text-align: center">Повышенная способность к регенерации</td>
+      </tr>
+      <tr>
+        <td>Профессор икс</td>
+        <td>94</td>
+        <td>
+          Чтение мыслей, вызов иллюзий, временного паралича, способность
+          останавливать время
+        </td>
+      </tr>
+    </table>
+    <table
+      style="
+        width: 100%;
+        text-align: center;
+        border-color: rgb(199, 59, 59);
+        border-style: dashed;
+      "
+    >
+      <caption>
+        Сотрудники отдела поддержки
+      </caption>
+      <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Должность</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Петя</td>
+          <td>Менеджер</td>
+        </tr>
+        <tr>
+          <td>Маша</td>
+          <td>Разработчик</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Вася</td>
+          <td>Девопс</td>
+        </tr>
+      </tfoot>
+    </table>
+    <table>
+      <tr>
+        <td>Первая ячейка</td>
+        <td>Вторая ячейка</td>
+        <td>Третья ячейка</td>
+      </tr>
+      <tr>
+        <td>Единственная ячейка</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>Первая ячейка</td>
+        <td>Вторая ячейка</td>
+        <td>Третья ячейка</td>
+      </tr>
+      <tr>
+        <td colspan="3">Единственная ячейка</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td rowspan="2">Левая ячейка</td>
+        <td>Верхняя ячейка</td>
+      </tr>
+      <tr>
+        <td>Нижняя ячейка</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td rowspan="2">Левая ячейка</td>
+        <td>Средняя ячейка</td>
+        <td>Правая ячейка</td>
+      </tr>
+      <tr>
+        <td colspan="2">Нижняя ячейка</td>
+      </tr>
+    </table>
+    <form>
+      <input type="text" /><br />
+      <input type="password" /><br />
+      <input type="radio" name="gender" value="male" /> Мужской<br />
+      <input type="radio" name="gender" value="female" /> Женский<br />
+      <input type="checkbox" />тык<br />
+      <input type="file" /><br />
+      <select name="choice" size="1">
+        <option value="first">first1</option>
+        <option value="second">second2</option>
+        <option value="third">third3</option></select
+      ><br />
+      <input type="reset" /><br />
+      <input type="submit" /><br />
+      <input type="range" min="0" max="100" step="1" value="range" />
+      <button>Нажми</button><br />
+    </form>
+  </body>
+</html>

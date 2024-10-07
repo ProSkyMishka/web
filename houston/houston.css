@@ -1,0 +1,40 @@
+body {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2, h3 {
+    font-family: sans-serif;
+    margin-top: 3em;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+table, th, td {
+    border: solid black 1px;
+    border-collapse: collapse;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+figure {
+    float: left;
+    width: 33%;
+}
+
+figure > img {
+    width: 100%
+}
+
+table {
+    margin: auto;
+}
+
+table.float-right {
+    float: right;
+}
