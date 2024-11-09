@@ -1,6 +1,6 @@
 export const Sidebar = () => {
   return (
-    <aside className="sidebar">
+    <form className="sidebar">
       <input type="text" placeholder="Search" />
       <br />
       <label>
@@ -12,6 +12,6 @@ export const Sidebar = () => {
         <option>Category 1</option>
         <option>Category 2</option>
       </select>
-    </aside>
+    </form>
   );
 };
