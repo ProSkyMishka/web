@@ -18,6 +18,47 @@
   },
   {
     "title": "Tomato",
+    "cat": "vegetables",
+    "count": 10,
+    "meas": "kg"
+  },
+  {
+    "title": "Stawberry",
+    "desc": "red sweet berry",
+    "cat": "berries",
+    "count": 1,
+    "meas": "pnd"
+  },
+  {
+    "title": "Stawberry",
+    "desc": "red sweet berry",
+    "cat": "berries",
+    "count": 2,
+    "meas": "pnd"
+  },
+  {
+    "title": "Tomato",
+    "cat": "vegetables",
+    "count": 10,
+    "meas": "kg"
+  },
+  {
+    "title": "Stawberry",
+    "desc": "red sweet berry",
+    "cat": "berries",
+    "count": 1,
+    "meas": "pnd"
+  },
+  {
+    "title": "Stawberry",
+    "desc": "red sweet berry",
+    "cat": "berries",
+    "count": 2,
+    "meas": "pnd"
+  },
+  {
+    "title": "Tomato",
+    "cat": "vegetables",
     "count": 10,
     "meas": "kg"
   },

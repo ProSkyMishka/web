@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testWeatherAPI</title>
+    <style>
+        .weatherCard {
+            border: 1em black solid;
+        }
+        .weatherList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сервис с погодой</h1>
+    <input type="text" id="city" placeholder="Введите город"><br>
+    <button onclick="getWeather()">Получить температуру</button>
+    <div id="weather"></div>
+    <button onclick="getWeatherFive()">Получить температуру</button>
+    <div id="weatherFive"></div>
+    <script>
+        const apiKey = "62f796e3c54cef4a1e538d2175c494ea";
+        function getWeather() {
+            const city = document.getElementById("city").value;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ru`
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const weather = `
+                    <h2>Погода в ${city}</h2>
+                    <p>Температура = ${data.main.temp}°C</p>
+                    `;
+                    document.getElementById("weather").innerHTML = weather
+                })
+                .catch( error =>
+                    document.getElementById("weather").innerHTML = "Error")
+        }
+
+        function getWeatherFive() {
+            const city = document.getElementById("city").value;
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=ru`
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    let weather = `<h2>Погода в ${city} на 5 дней</h2><div class="weatherList">`;
+                    data.list.forEach(element => {
+                        if (element.dt_txt.includes('09:00:00')) {
+                            weather += `<div class="weatherCard><h3>Время: ${element.dt_txt}</h3><p>Температура = ${element.main.temp}°C</p></div>`;
+                        }
+                    });
+                    document.getElementById("weatherFive").innerHTML = weather + `<\div>`;
+                })
+                .catch(error => 
+                    document.getElementById("weatherFive").innerHTML = "Error"
+                )
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testWeatherAPI1</title>
+    <style>
+        .weatherCard {
+            border: 1em black solid;
+        }
+
+        .weatherList {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Погода</h1>
+    <input type="text" id="city" placeholder="Введите город"><br>
+    <button onclick="getWeather()">Нажми для получения</button>
+    <div id="weather"></div>
+    <button onclick="getWeatherFive()">Нажми для получения прогноза на 5 дней</button>
+    <div id="weatherFive"></div>
+    <script>
+        const apiKey = "62f796e3c54cef4a1e538d2175c494ea";
+        function getWeatherFive() {
+            const city = document.getElementById("city").value;
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=ru`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    let weather = `
+                    <h2>Погода в ${city}</h2>
+                    <div class="weatherList">`
+                    data.list.forEach(element => {
+                        if (element.dt_txt.includes('12:00:00')) {
+                            console.log(element)
+                            weather += `<div class="weatherCard"><h3>Время: ${element.dt_txt}</h3><p>Температура = ${element.main.temp}</p></div>`
+                        }
+                    });
+                    weather += `</div>`
+                    document.getElementById('weatherFive').innerHTML = weather;
+                })
+                .catch(error => {
+                    document.getElementById('weatherFive').innerHTML = "Ошибка при получении данных.";
+                })
+        }
+
+        function getWeather() {
+            const city = document.getElementById('city').value;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ru`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const weather = `
+                    <h2>Погода в ${data.name}:</h2>
+                    <p>Температура: ${data.main.temp}°C</p>
+                    <p>Описание: ${data.weather[0].description}</p>
+                    `;
+                    document.getElementById('weather').innerHTML = weather;
+                })
+                .catch(error => {
+                    document.getElementById('weather').innerHTML = 'Ошибка при получении данных.';
+                });
+        }
+    </script>
+</body>
+</html>

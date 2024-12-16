@@ -1,0 +1,47 @@
+header {
+    height: 5vh;
+    background: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+}
+
+nav a {
+    color: black;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.linkhead {
+    scroll-margin-top: 5vh;
+}
+
+.about {
+    margin: auto;
+    margin-top: 20px;
+    padding: 3vh 1vw;
+    border: 2px black solid;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer {
+    height: 20vh;
+    width: 100%;
+    background: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

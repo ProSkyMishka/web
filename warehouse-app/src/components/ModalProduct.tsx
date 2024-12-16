@@ -1,5 +1,12 @@
 import { ProductCardProps } from "./ProductCard";
 import defaultImage from "../assets/image.png";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  Typography,
+  Box,
+} from "@mui/material";
 
 export interface ModalProps {
   onClose: () => void;
@@ -15,23 +22,44 @@ export const ModalProduct = ({
   image,
 }: ProductCardProps & ModalProps) => {
   return (
-    <div className="modalOverlay" onClick={onClose}>
-      <div className="modalCard" onClick={(e) => e.stopPropagation()}>
-        <button className="closeButton" onClick={onClose}>
-          ×
-        </button>
-        <h2>{title}</h2>
-        {image ? (
-          <img src={image} className="productCardImage" />
-        ) : (
-          <img src={defaultImage} className="productCardImage" />
-        )}
-        {desc && <p>{desc}</p>}
-        {cat && <p>Category: {cat}</p>}
-        <p>
-          {count} {meas}
-        </p>
-      </div>
-    </div>
+    <Dialog
+      open={true}
+      onClose={onClose}
+      sx={{
+        "& .MuiDialog-paper": {
+          maxWidth: "600px",
+          maxHeight: "500px",
+          display: "flex",
+          flexDirection: "column",
+        },
+      }}
+    >
+      <DialogTitle>{title}</DialogTitle>
+      <DialogContent
+        sx={{
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <Box
+          component="img"
+          src={image || defaultImage}
+          alt={title}
+          sx={{
+            width: "60%",
+            height: "auto",
+            marginBottom: 2,
+          }}
+        />
+        <Typography>Category: {cat}</Typography>
+        <Typography>
+          Count: {count} {meas}
+        </Typography>
+        <Typography>Description: {desc}</Typography>
+      </DialogContent>
+    </Dialog>
   );
 };

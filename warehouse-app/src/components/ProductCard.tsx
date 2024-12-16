@@ -1,4 +1,12 @@
 import defaultImage from "../assets/image.png";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Tooltip,
+  Box,
+} from "@mui/material";
 
 export interface ProductCardProps {
   title: string;
@@ -23,18 +31,48 @@ export const ProductCard = ({
   image,
 }: ProductCardProps & CardProps) => {
   return (
-    <div className="productCard" onClick={onClick}>
-      <h2>{title}</h2>
-      {image ? (
-        <img src={image} className="productCardImage" />
-      ) : (
-        <img src={defaultImage} className="productCardImage" />
-      )}
-      {desc && <p className="productCardDesc">{desc}</p>}
-      {cat && <p>Category: {cat}</p>}
-      <p>
-        {count} {meas}
-      </p>
-    </div>
+    <Tooltip
+      title={
+        <Box
+          sx={{
+            maxWidth: 300,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {desc || "None"}
+        </Box>
+      }
+      arrow
+    >
+      <Card
+        onClick={onClick}
+        sx={{
+          width: 300,
+          "&:hover": { transform: "scale(1.1)" },
+        }}
+      >
+        <CardContent sx={{ textAlign: "center", paddingBottom: 0 }}>
+          <Typography variant="h6" component="div" gutterBottom>
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {cat}
+          </Typography>
+        </CardContent>
+        <CardMedia
+          component="img"
+          height="140"
+          image={image || defaultImage}
+          alt={title}
+        />
+        <CardContent>
+          <Typography variant="body1">
+            {count} {meas}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Tooltip>
   );
 };

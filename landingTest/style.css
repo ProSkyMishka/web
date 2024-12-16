@@ -1,7 +1,8 @@
 header {
-    background: #007765;
+    background: gray;
     position: sticky;
     top: 0;
+    display: flex;
 }
 
 .container {
