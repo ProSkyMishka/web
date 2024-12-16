@@ -2,18 +2,28 @@ import "./App.css";
 import { ProductList } from "./components/ProductList";
 import { NavigationPanel } from "./components/NavigationPanel";
 import { useState } from "react";
-import { Sidebar } from "./components/Sidebar";
+import { Filters, Sidebar } from "./components/Sidebar";
 import { Backdrop } from "@mui/material";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [filters, setFilters] = useState({
+    name: "",
+    category: "",
+    inStock: false,
+  });
 
   const sidebarToggle = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const applyFilters = (newFilters: Filters) => {
+    setFilters(newFilters);
+    setIsSidebarOpen(false);
+  };
+
   return (
-    <div>
+    <>
       <NavigationPanel onClick={sidebarToggle} />
       {isSidebarOpen && (
         <>
@@ -25,11 +35,19 @@ function App() {
               zIndex: 1,
             }}
           />{" "}
-          <Sidebar onClose={sidebarToggle} />
+          <Sidebar
+            getFilters={filters}
+            onApplyFilters={applyFilters}
+            onClose={sidebarToggle}
+          />
         </>
       )}
-      <ProductList />
-    </div>
+      <ProductList
+        name={filters.name}
+        category={filters.category}
+        inStock={filters.inStock}
+      />
+    </>
   );
 }
 

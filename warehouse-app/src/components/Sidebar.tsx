@@ -12,15 +12,27 @@ import {
 } from "@mui/material";
 import { Close as CloseIcon } from "@mui/icons-material";
 
+export interface Filters {
+  name: string;
+  category: string;
+  inStock: boolean;
+}
+
 interface SidebarProps {
+  getFilters: Filters;
+  onApplyFilters: (filter: Filters) => void;
   onClose: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
+export const Sidebar: React.FC<SidebarProps> = ({
+  getFilters,
+  onApplyFilters,
+  onClose,
+}) => {
   const [filters, setFilters] = React.useState({
-    name: "",
-    category: "",
-    inStock: false,
+    name: getFilters.name,
+    category: getFilters.category,
+    inStock: getFilters.inStock,
   });
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +40,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   };
 
   const applyFilters = () => {
-    console.log("Filters applied:", filters);
+    onApplyFilters(filters);
     onClose();
   };
 

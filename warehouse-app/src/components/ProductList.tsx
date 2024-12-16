@@ -3,25 +3,47 @@ import { useEffect, useState } from "react";
 import { ModalProduct } from "./ModalProduct";
 import productsData from "../assets/products.json";
 import { Pagination, Box, Grid2 } from "@mui/material";
+import { Filters } from "./Sidebar";
 
-export const ProductList = () => {
+export const ProductList = (filters: Filters) => {
   const [items, setProducts] = useState<ProductCardProps[]>([]);
   const [item, setSelectedProduct] = useState<null | (typeof items)[0]>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [filteredItems, setFilteredItems] = useState<ProductCardProps[]>([]);
 
   const ITEMS_PER_PAGE = 8;
 
   useEffect(() => {
     // Загружаем тестовые данные
     setProducts(productsData);
+    setFilteredItems(productsData);
   }, []);
 
-  const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);
+  useEffect(() => {
+    let filtered = items;
+
+    if (filters.name) {
+      const nameRegex = new RegExp(filters.name, "i");
+      filtered = filtered.filter((item) => nameRegex.test(item.title));
+    }
+
+    if (filters.category) {
+      filtered = filtered.filter((item) => item.cat == filters.category);
+    }
+
+    if (filters.inStock) {
+      filtered = filtered.filter((item) => item.count > 0);
+    }
+
+    setFilteredItems(filtered);
+  }, [filters, items]);
+
+  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
 
-  const currentProducts = items.slice(startIndex, endIndex);
+  const currentProducts = filteredItems.slice(startIndex, endIndex);
 
   const handlePageChange = (_: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
