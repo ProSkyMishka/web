@@ -11,6 +11,8 @@ import {
   IconButton,
 } from "@mui/material";
 import { Close as CloseIcon } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import { Category } from "../slices/categoriesSlice";
 
 export interface Filters {
   name: string;
@@ -43,6 +45,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
     onApplyFilters(filters);
     onClose();
   };
+
+  const categories = useSelector((state: any) => state.categories.categories);
 
   return (
     <Drawer anchor="left" open={true} onClose={onClose}>
@@ -98,8 +102,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
           >
             <MenuItem value="">All Categories</MenuItem>
-            <MenuItem value="Berries">Berries</MenuItem>
-            <MenuItem value="Vegetables">Vegetables</MenuItem>
+            {categories.map((cat: Category) => (
+              <MenuItem value={cat.id}>{cat.name}</MenuItem>
+            ))}
           </TextField>
           <FormControlLabel
             control={

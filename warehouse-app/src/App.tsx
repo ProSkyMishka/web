@@ -1,9 +1,11 @@
-import "./App.css";
-import { ProductList } from "./components/ProductList";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { CategoryList } from "./components/categories/CategoryList";
 import { NavigationPanel } from "./components/NavigationPanel";
-import { useState } from "react";
 import { Filters, Sidebar } from "./components/Sidebar";
-import { Backdrop } from "@mui/material";
+import { useState } from "react";
+import { ProductsPage } from "./pages/ProductsPage";
+import { ProductPage } from "./pages/ProductPage";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -23,31 +25,31 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       <NavigationPanel onClick={sidebarToggle} />
       {isSidebarOpen && (
-        <>
-          <Backdrop
-            open={isSidebarOpen}
-            onClick={sidebarToggle}
-            sx={{
-              color: "#fff",
-              zIndex: 1,
-            }}
-          />{" "}
-          <Sidebar
-            getFilters={filters}
-            onApplyFilters={applyFilters}
-            onClose={sidebarToggle}
-          />
-        </>
+        <Sidebar
+          getFilters={filters}
+          onApplyFilters={applyFilters}
+          onClose={() => setIsSidebarOpen(false)}
+        />
       )}
-      <ProductList
-        name={filters.name}
-        category={filters.category}
-        inStock={filters.inStock}
-      />
-    </>
+      <Routes>
+        <Route path="/profile" element={<UserProfile />} />
+        <Route
+          path="products"
+          element={
+            <ProductsPage
+              name={filters.name}
+              category={filters.category}
+              inStock={filters.inStock}
+            />
+          }
+        />
+        <Route path="/products/:id" element={<ProductPage />} />
+        <Route path="/categories" element={<CategoryList />} />
+      </Routes>
+    </Router>
   );
 }
 
